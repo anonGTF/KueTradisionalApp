@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">KueTradisionalApp</string>
+    <string name="upload_gambar_atau_buka_kamera">Upload Gambar atau Buka Kamera</string>
+    <string name="image_selected">image selected</string>
+    <string name="nama_kue_tradisional">Nama Kue Tradisional</string>
+    <string name="deskripsi_kue_tradisional">Deskripsi kue tradisional</string>
+    <string name="klik_tombol_di_bawah">Klik tombol di bawah</string>
+    <string name="untuk_melihat_resep_jajanan_di_atas">untuk melihat resep jajanan di atas</string>
+    <string name="oops_hasil_tidak_ditemukan">Oops.. Hasil tidak ditemukan</string>
+    <string name="coba_pakai_gambar_yang_lain">Coba pakai gambar yang lain!</string>
+    <string name="sepertinya_jaringan_internetmu_terputus">Sepertinya jaringan internetmu terputus</string>
+    <string name="yuk_cek_koneksi_jaringanmu">Yuk.. cek koneksi jaringanmu</string>
+    <string name="bahan_bahan">Bahan-bahan</string>
+    <string name="prosedur_pembuatan">Prosedur Pembuatan</string>
+    <string name="failed_to_connect">failed to connect</string>
+    <string name="retry">retry</string>
+</resources>
