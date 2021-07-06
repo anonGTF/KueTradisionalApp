@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/imgInput"
-            android:layout_width="155dp"
-            android:layout_height="206dp"
+            android:layout_width="150dp"
+            android:layout_height="240dp"
             android:layout_marginTop="60dp"
             android:src="@drawable/kuetradisionallogo"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
 
         <TextView
             android:id="@+id/tvDeskripsi"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
             android:layout_marginHorizontal="60dp"

@@ -18,6 +18,7 @@ import com.bimo.kuetradisionalapp.util.YOUTUBE_API_KEY
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
+import java.util.*
 
 class DetailActivity : YouTubeBaseActivity(), LifecycleOwner {
 
@@ -43,7 +44,7 @@ class DetailActivity : YouTubeBaseActivity(), LifecycleOwner {
         extras?.let {
             title = extras.getString(EXTRA_KUE_NAME).toString()
             Log.d("coba", "onCreate: $title")
-            viewModel.getRecipe(if (title.isNotBlank()) title else "kue_lumpur")
+            viewModel.getRecipe(title.replace(" ", "_").toLowerCase(Locale.ROOT))
         }
 
         viewModel.data.observe(this, { response ->

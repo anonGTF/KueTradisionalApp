@@ -6,22 +6,16 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStore
-import com.bimo.kuetradisionalapp.data.remote.RetrofitInstance
 import com.bimo.kuetradisionalapp.data.remote.RetrofitInstance.Companion.api
 import com.bimo.kuetradisionalapp.databinding.ActivityResultBinding
 import com.bimo.kuetradisionalapp.detail.DetailActivity
 import com.bimo.kuetradisionalapp.detail.DetailActivity.Companion.EXTRA_KUE_NAME
-import com.bimo.kuetradisionalapp.detail.DetailViewModel
 import com.bimo.kuetradisionalapp.model.KueTradisionalData
 import com.bimo.kuetradisionalapp.util.Classifier
 import com.bimo.kuetradisionalapp.util.Resource
 import com.bimo.kuetradisionalapp.util.ViewModelProviderFactory
-import com.bumptech.glide.Glide
-import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 
 class ResultActivity : AppCompatActivity() {
@@ -47,12 +41,10 @@ class ResultActivity : AppCompatActivity() {
             val sensorOrientation = extras.getInt(SENSOR_ORIENTATION)
             if (filePath != null) {
                 val file = File(filePath)
-                if (file.exists()) {
-                    Log.d("coba", "onCreate: $file")
-                    bitmap = BitmapFactory.decodeFile(file.absolutePath)
-                    val classifier = Classifier.create(this, Classifier.Device.CPU, -1)
-                    viewModel.detect(classifier, bitmap, sensorOrientation)
-                }
+                Log.d("coba", "onCreate: $file")
+                bitmap = BitmapFactory.decodeStream(this.openFileInput("myImage"))
+                val classifier = Classifier.create(this, Classifier.Device.CPU, -1)
+                viewModel.detect(classifier, bitmap, sensorOrientation)
             }
         }
 
@@ -86,9 +78,7 @@ class ResultActivity : AppCompatActivity() {
         with(binding) {
             tvNama.text = data?.name
             tvDeskripsi.text = data?.description
-            Glide.with(this@ResultActivity)
-                .load(bitmap)
-                .into(imgInput)
+            imgInput.setImageBitmap(bitmap)
             btnDetail.setOnClickListener {
                 intent = Intent(this@ResultActivity, DetailActivity::class.java)
                 intent.putExtra(EXTRA_KUE_NAME, data?.name)
