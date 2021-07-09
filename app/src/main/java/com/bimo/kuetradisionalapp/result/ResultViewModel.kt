@@ -9,6 +9,7 @@ import com.bimo.kuetradisionalapp.data.KueTradisionalRepository
 import com.bimo.kuetradisionalapp.model.KueTradisionalData
 import com.bimo.kuetradisionalapp.util.Classifier
 import com.bimo.kuetradisionalapp.util.Resource
+import com.bimo.kuetradisionalapp.util.THRESHOLD
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -31,9 +32,12 @@ class ResultViewModel(
                 Log.d("coba", "detect: $response")
                 Log.d("coba", "detect: $recognition")
                 Log.d("coba", "detect: $sensorOrientation")
+                if (recognition.confidence!! < THRESHOLD) {
+                    throw Exception("not found")
+                }
                 data.postValue(Resource.Success(response?.body()!!.data))
             }
-        } catch (e: IOException) {
+        } catch (e: Exception) {
             data.postValue(Resource.Error(e.localizedMessage!!))
             Log.e("classifier", e.localizedMessage!!)
         }

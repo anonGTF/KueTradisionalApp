@@ -10,82 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imgInput"
-            android:layout_width="150dp"
-            android:layout_height="240dp"
-            android:layout_marginTop="60dp"
-            android:src="@drawable/kuetradisionallogo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/image_selected" />
-
-        <TextView
-            android:id="@+id/tvNama"
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/result"
+            layout="@layout/item_result"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="33dp"
-            android:text="@string/nama_kue_tradisional"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgInput" />
-
-        <TextView
-            android:id="@+id/tvDeskripsi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:layout_marginHorizontal="60dp"
-            android:text="@string/deskripsi_kue_tradisional"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNama" />
-
-        <TextView
-            android:id="@+id/tvCTA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="38dp"
-            android:text="@string/klik_tombol_di_bawah"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDeskripsi" />
-
-        <TextView
-            android:id="@+id/tvKeterangan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/untuk_melihat_resep_jajanan_di_atas"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCTA" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDetail"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:layout_marginTop="30dp"
-            app:icon="@drawable/ic_arrow_forward"
-            app:iconSize="36dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCTA"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.rounded" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvProgress"
@@ -118,6 +52,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <include
+            android:id="@+id/noInternet"
+            layout="@layout/item_no_internet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <include
+            android:id="@+id/notFound"
+            layout="@layout/item_not_found"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

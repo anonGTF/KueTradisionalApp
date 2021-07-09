@@ -25,6 +25,8 @@ class HomeActivity : AppCompatActivity() {
         binding.btnCTA.setOnClickListener {
             openImageChooser()
         }
+
+        supportActionBar?.title = "Deteksi Kue Tradisional"
     }
 
 

@@ -7,14 +7,14 @@ import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.*
+import com.bimo.kuetradisionalapp.R
 import com.bimo.kuetradisionalapp.data.remote.RetrofitInstance.Companion.api
 import com.bimo.kuetradisionalapp.databinding.ActivityDetailBinding
 import com.bimo.kuetradisionalapp.model.RecipeData
-import com.bimo.kuetradisionalapp.util.OrderedListSpan
-import com.bimo.kuetradisionalapp.util.Resource
-import com.bimo.kuetradisionalapp.util.ViewModelProviderFactory
-import com.bimo.kuetradisionalapp.util.YOUTUBE_API_KEY
+import com.bimo.kuetradisionalapp.util.*
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -93,9 +93,9 @@ class DetailActivity : YouTubeBaseActivity(), LifecycleOwner {
             progressBar.visibility = View.INVISIBLE
 
             playVideo(data?.youtube_id)
-            tvNamaKueTradisional.text = title
-            tvDetailAlatBahan.text = bahanBuilder
-            tvDetailProsedur.text = prosedurBuilder
+            detail.tvNamaKueTradisional.text = title
+            detail.tvDetailAlatBahan.text = bahanBuilder
+            detail.tvDetailProsedur.text = prosedurBuilder
         }
     }
 
@@ -125,8 +125,16 @@ class DetailActivity : YouTubeBaseActivity(), LifecycleOwner {
     }
 
     private fun handleErrorState(msg: String) {
-        binding.error.tvErrorMessage.text = msg
-        binding.error.cvError.visibility = View.VISIBLE
+        binding.detail.llDetail.visibility = View.INVISIBLE
+        when (msg) {
+            NO_INTERNET_ERROR -> {
+                binding.noInternet.cvNoInternet.visibility = View.VISIBLE
+            }
+            else -> {
+                binding.error.tvErrorMessage.text = msg
+                binding.error.cvError.visibility = View.VISIBLE
+            }
+        }
     }
 
     private fun handleLoadingState() {
